@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+      <head>
+          <!----RESPONSIVE ENHANCING LINK-->
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <!--FONT AWESOME LINK-->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <!---GOOGLE FONTS PARISIENNE -->
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+        <title>Shopping Cart</title>
+        <style>
+            * {
+              box-sizing: border-box;
+              }
+            body {
+              font-family: Helvetica;
+              margin: 1px;
+              padding:1px;
+              background-color:aquamarine;
+            }
+          /*NAVIGATION BAR */
+            .topnav {
+              padding: 5px 5px;
+              background-color: blue;
+              overflow: hidden;
+            }
+
+            .topnav a {
+              display: block;
+              float: left;
+              text-decoration: none;
+              text-align: center;
+              color: #f2f2f2;
+              font-size: 15px;
+              padding: 10px 14px; 
+            }
+
+            .active {
+              background-color:red;
+              color: white;
+            }
+
+            .topnav img{
+              width:20px;
+              height:20px;
+              float:left;
+              padding: 2px 2px;
+              height: 17px;
+            }
+
+            .dropdown {
+              float: left;
+              overflow: hidden;
+              min-width: 50px;
+            }
+
+            .dropdown .dropbtn {
+              background-color: inherit;
+              font-family: inherit;
+              color: white;
+              font-size: 15px;    
+              border:none;
+              outline: none;
+              padding: 10px 14px;
+              margin: 0;
+              min-width: 50px;
+            }
+
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color:gold;
+              min-width: 50px;
+              box-shadow: 0px 8px 16px 0px rgba(0,5,0,0.2);
+              z-index: 1;
+            }
+
+            .dropdown-content a {
+              display: block;
+              float: none;
+              text-align: left;
+              text-decoration: none;
+              color: black;
+              padding: 12px 16px; 
+            }
+
+            .topnav a:hover, .dropdown:hover .dropbtn {
+              background-color:hotpink;
+              color: white;
+            }
+
+            .dropdown-content a:hover {
+              background-color: hotpink;
+              color: white;
+            }
+
+            .dropdown:hover .dropdown-content {
+              display: block;
+            }
+
+            
+          /*BANNER*/
+            .banner {
+              background-image:
+              url(images/cshop.jpg);
+              background-size: cover;
+              height: 50vh;
+            }
+
+            .banner h2{
+              color: gold;
+              text-align: center;
+              font-family:Parisienne;
+              font-size: 120px;
+              padding-top: 40px;
+            }
+
+            /* FLOAT 4 COLUMNS SIDE BY SIDE */
+
+.statement h3{
+color: red;
+text-align: center;
+font-size: 40px;
+font-family:Parisienne ;
+
+}
+/* SHOPPING CART CSS STARTS HERE*/
+/* WHOLE PAGE */
+#cart-wrap * {
+  font-family: arial, sans-serif;
+  box-sizing: border-box;
+}
+#cart-wrap {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+#cart-products, #cart-items { padding: 10px; }
+#cart-products { flex-grow: 1; }
+#cart-items { width: 180px; }
+input.cart, button.cart {
+  padding: 10px;
+  border: 0;
+  background: red;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* PRODUCTS LIST */
+#cart-products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 15px;
+}
+.p-item {
+  padding: 10px;
+  border: 1px solid blue;
+  background-color: #55ACEE;
+  border-radius: 10px;
+  text-align: center;
+}
+.p-img { max-width: 150px; }
+.p-name, .p-price { font-weight: 700; }
+.p-name, .p-desc, .p-price { margin: 5px 0; }
+.p-name {
+  font-size: 1.35em;
+  text-transform: uppercase;
+}
+.p-desc {
+  color: black;
+  font-size: 16px;
+}
+.p-price { color: #e13d16; }
+.p-add { width: 100%; }
+
+/* CURRENT SHOPPING CART */
+#cart-items {
+  background:blue;
+  color: #fff;
+  border-radius: 5px;
+  height: 97rem;
+  width: 50rem;
+}
+.c-item {
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.c-name, .c-total {
+  font-size: 1.05em;
+  font-weight: 700;
+}
+.c-name, .c-total, button.c-empty, button.c-checkout { width: 100%; }
+.c-total, button.c-empty, button.c-checkout { margin-top: 10px; margin-bottom: 10px;}
+.c-del { width: 25%; }
+.c-qty { width: 75%; }
+.c-empty, .c-checkout { width: 100%; }
+
+/* MAKE IT RESPONSIVE */
+@media screen and (max-width: 640px) {
+  #cart-products {
+    grid-template-columns: 100%;
+  }
+}
+
+            /* FOOTER */
+            .footer {
+              padding: 20px;
+              text-align: center;
+              background: #ddd;
+              padding-left: 5px;
+              padding-right: 10px;
+            }
+
+            .footer{
+              color:white;
+              font-size: 14px;
+              background-color: blue;
+            }
+
+            .footer a{
+              color:gold;
+            }
+
+            .fa {
+              padding: 10px;
+              font-size: 20px;
+              width: 40px;
+              text-align: center;
+              text-decoration: none;
+              margin: 5px 5px;
+              border-radius: 50%;
+            }
+
+            .fa:hover {
+              opacity: 0.7;
+            }
+
+            .fa-facebook {
+              background: #3B5998;
+              color: white;
+            }
+
+            .fa-twitter {
+              background: #55ACEE;
+              color: white;
+            }
+
+            .fa-google {
+              background: #dd4b39;
+              color: white;
+            }
+
+            .fa-linkedin {
+              background: #007bb5;
+              color: white;
+            }
+
+            .fa-youtube {
+              background: #bb0000;
+              color: white;
+            }
+
+            .fa-instagram {
+              background: #125688;
+              color: white;
+            }
+        </style>
+        <script>
+          var cart = {
+          // PROPERTIES
+          hPdt : null,      // html products list
+          hItems : null,    // html current cart
+          items : {},       // current items in cart
+          iURL : "images/", // product image url folder
+          //LOCALSTORAGE CART
+          //SAVE CURRENT CART INTO LOCALSTORAGE
+          save : () => {
+            localStorage.setItem("cart", JSON.stringify(cart.items));
+          },
+        
+          // LOAD CART FROM LOCALSTORAGE
+          load : () => {
+            cart.items = localStorage.getItem("cart");
+            if (cart.items == null) { cart.items = {}; }
+            else { cart.items = JSON.parse(cart.items); }
+          },
+        
+          //EMPTY ENTIRE CART
+          nuke : () => { if (confirm("Empty cart?")) {
+            cart.items = {};
+            localStorage.removeItem("cart");
+            cart.list();
+          }},
+        
+          //INITIALIZE
+          init : () => {
+            //GET HTML ELEMENTS
+            cart.hPdt = document.getElementById("cart-products");
+            cart.hItems = document.getElementById("cart-items");
+        
+            //DRAW PRODUCTS LIST
+            cart.hPdt.innerHTML = "";
+            let template = document.getElementById("template-product").content,
+                p, item, part;
+            for (let id in products) {
+              p = products[id];
+              item = template.cloneNode(true);
+              item.querySelector(".p-img").src = cart.iURL + p.img;
+              item.querySelector(".p-name").textContent = p.name;
+              item.querySelector(".p-desc").textContent = p.desc;
+              item.querySelector(".p-price").textContent = "Ksh." + p.price.toFixed(2);
+              item.querySelector(".p-add").onclick = () => { cart.add(id); };
+              cart.hPdt.appendChild(item);
+            }
+        
+            //LOAD CART FROM PREVIOUS SESSION
+            cart.load();
+        
+            //LIST CURRENT CART ITEMS
+            cart.list();
+          },
+        
+          //LIST CURRENT CART ITEMS (IN HTML)
+          list : () => {
+            //RESET
+            cart.hItems.innerHTML = "";
+            let item, part, pdt, empty = true;
+            for (let key in cart.items) {
+              if (cart.items.hasOwnProperty(key)) { empty = false; break; }
+            }
+        
+            //CART IS EMPTY
+            if (empty) {
+              item = document.createElement("div");
+              item.innerHTML = "There is nothing in the Cart";
+              cart.hItems.appendChild(item);
+            }
+        
+            //CART IS NOT EMPTY - LIST ITEMS
+            else {
+              let template = document.getElementById("template-cart").content,
+                  p, total = 0, subtotal = 0;
+              for (let id in cart.items) {
+                //PRODUCT ITEM
+                p = products[id];
+                item = template.cloneNode(true);
+                item.querySelector(".c-del").onclick = () => { cart.remove(id); };
+                item.querySelector(".c-name").textContent = p.name;
+                item.querySelector(".c-qty").value = cart.items[id];
+                item.querySelector(".c-qty").onchange = function () { cart.change(id, this.value); };
+                cart.hItems.appendChild(item);
+        
+                //SUBTOTAL
+                subtotal = cart.items[id] * p.price;
+                total += subtotal;
+              }
+        
+              // TOTAL AMOUNT
+              item = document.createElement("div");
+              item.className = "c-total";
+              item.id = "c-total";
+              item.innerHTML ="TOTAL: Ksh." + total;
+              cart.hItems.appendChild(item);
+        
+              // EMPTY & CHECKOUT
+              item = document.getElementById("template-cart-checkout").content.cloneNode(true);
+              cart.hItems.appendChild(item);
+            }
+          },
+        
+          //ADD ITEM INTO CART
+          add : (id) => {
+            if (cart.items[id] == undefined) { cart.items[id] = 1; }
+            else { cart.items[id]++; }
+            cart.save(); cart.list();
+          },
+        
+          // CHANGE QUANTITY
+          change : (pid, qty) => {
+            // REMOVE ITEM
+            if (qty <= 0) {
+              delete cart.items[pid];
+              cart.save(); cart.list();
+            }
+        
+            // UPDATE TOTAL ONLY
+            else {
+              cart.items[pid] = qty;
+              var total = 0;
+              for (let id in cart.items) {
+                total += cart.items[id] * products[id].price;
+                document.getElementById("c-total").innerHTML ="TOTAL: Ksh." + total;
+              }
+            }
+          },
+        
+          // REMOVE ITEM FROM CART
+          remove : (id) => {
+            delete cart.items[id];
+            cart.save();
+            cart.list();
+          },
+        
+          // CHECKOUT
+          checkout : () => {
+            // PAYMENT
+            alert("Make a payment");      
+        
+          }
+        };
+        window.addEventListener("DOMContentLoaded", cart.init);
+        </script>
+        <script>
+          //  PRODUCTS (PRODUCT ID & DATA)
+        var products = {
+          123: {
+            name : "HP LAPTOP",
+            desc : "4GB RAM;500GB ROM; 3.0GHz; 14inches Display; Wi-Fi; Bluetooth; 3.0 USB Port; Core i7-Intel",
+            img : "hplaptop.png",
+            price : 30000
+          },
+          124: {
+            name : "DELL DESKTOP",
+            desc : "4GB RAM;500GB ROM; 3.0GHz; 14inches Monitor; 2.0 USB Port; Core i7-Intel.",
+            img : "dell desktop.jpg",
+            price : 25000
+          },
+          125: {
+            name : "DELL LAPTOP",
+            desc : "4GB RAM;1TB ROM; 3.0GHz; 14inches Display; Wi-Fi; Bluetooth; 3.0 USB Port; Core i7-Intel.",
+            img : "delllaptop.jpg",
+            price : 35000
+          },
+          126: {
+            name : "LENOVO LAPTOP",
+            desc : "4GB RAM;500GB ROM; 3.0GHz; 14inches Display; Wi-Fi; Bluetooth; 2.0 USB Port; Core i3-Intel. ",
+            img : "lenovolaptop.jpg",
+            price : 28000
+          },
+          127: {
+            name : "DELL MONITOR",
+            desc : "Brand New; Black; 14 inches. ",
+            img : "monitor.jpg",
+            price : 4000
+          },
+          128: {
+            name : "HP DESKTOP",
+            desc : "4GB RAM;500GB ROM; 3.0GHz; 14inches Monitor; 2.0 USB Port; Core i7-Intel. ",
+            img : "hp-desktop-computer.jpg",
+            price : 25000
+          },
+          129: {
+            name : "HUB",
+            desc : "Brand New; Black; samsung ",
+            img : "hub.jpg",
+            price : 2500
+          },
+          130: {
+            name : "FLEX CABLE",
+            desc : "TPC",
+            img : "flex.jpg",
+            price : 2000
+          },
+          132: {
+            name : "SATELLITE DISH ",
+            desc : "Zuku. ",
+            img : "dish.jpg",
+            price : 3000
+          },
+          133: {
+            name : "ROUTER",
+            desc : "TP-LINK. ",
+            img : "router.jpg",
+            price : 3500
+          },
+          134: {
+            name : "RJ 45",
+            desc : "Brand New. ",
+            img : "RJ45.jpg",
+            price : 50
+          },
+          135: {
+            name : "HUAWEI 2020 SMARTPHONE",
+            desc : "Android 12 OS; Octa-core (2.4 GHz & 2.0 GHz)CPU; microSDXC; Internal	128GB 6GB RAM, 48 MP Main Camera, Silver. ",
+            img : "huawei.jpg",
+            price : 12000
+          },
+          136: {
+            name : "LG SMARTPHONE",
+            desc : "Android 12 OS; Octa-core (2.4 GHz & 2.0 GHz)CPU; microSDXC; Internal	128GB 6GB RAM, 48 MP Main Camera, Silver. ",
+            img : "LG.gif",
+            price : 10000
+          },
+          137: {
+            name : "HUAWEI 2019 SMARTPHONE",
+            desc : "Android 12 OS; Octa-core (2.4 GHz & 2.0 GHz)CPU; microSDXC; Internal	128GB 6GB RAM, 48 MP Main Camera, Black. ",
+            img : "huawei.jpg",
+            price : 11000
+          },
+          138: {
+            name : "SAMSUNG SMARTPHONE",
+            desc : "Android 12 OS; Octa-core (2.4 GHz & 2.0 GHz)CPU; microSDXC; Internal	128GB 6GB RAM, 48 MP Main Camera, Black. ",
+            img : "samsung.jpg",
+            price : 15000
+          }
+        };
+        </script>
+        </head>
+  <body>
+<!-----NAVIGATION BAR -->
+      <div class="topnav" id="myTopnav">
+        <a href="shoppingcart.html">SHOPPING CART</a>
+
+      </div>
+
+<!---BANNER-->
+      <div class="banner">
+        <h2>Hub Computer Shop</h2>  
+      </div>
+
+      <div class="statement">
+        <h3>You are Welcome to Make an Order</h3>
+      </div>
+      
+
+<!--SHOPPING CART -->
+<!--  CART -->
+<div id="cart-wrap">
+  <!-- PRODUCTS LIST -->
+  <div id="cart-products"></div>
+
+  <!-- CURRENT CART ITEMS -->
+  <div id="cart-items"></div>
+</div>
+
+<!-- TEMPLATES -->
+<!-- PRODUCT CELL -->
+<template id="template-product">
+<div class="p-item">
+  <img class="p-img"/>
+  <div class="p-name"></div>
+  <div class="p-desc"></div>
+  <div class="p-price"></div>
+  <button class="cart p-add">Add To Cart</button>
+</div>
+</template>
+
+<!-- CART ITEMS -->
+<template id="template-cart">
+<div class="c-item">
+  <div class="c-name"></div>
+  <button class="c-del cart">X</button>
+  <input class="c-qty" type="number" min="0"/>
+</div>
+</template>
+<template id="template-cart-checkout">
+  <button class="c-empty cart" onclick="cart.nuke()">Empty</button>
+  <button class="c-checkout cart" onclick="cart.checkout()">Checkout</button>
+</template>
+  
+
+
+
+  <!---FOOTER-->
+      <div class="footer">
+  
+        <!---SOCIAL MEDIA LINKS-->
+          <h2>Social Links</h2>
+              <a href="#" class="fa fa-facebook"></a>
+              <a href="#" class="fa fa-twitter"></a>
+              <a href="#" class="fa fa-google"></a>
+              <a href="#" class="fa fa-linkedin"></a>
+              <a href="#" class="fa fa-youtube"></a>
+              <a href="#" class="fa fa-instagram"></a>
+          <p>Copyright @2022 All Rights Reserved by:<a href="homepage.html">Hub Computer Shop</a></p>
+      </div>
+  </body>
+</html>
